@@ -1,0 +1,10 @@
+/* Customizações simples do livro CAP-423 */
+
+.book .book-body .page-wrapper .page-inner section.normal p {
+  text-align: justify;
+}
+
+.quarto-title-block .quarto-title-banner {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}

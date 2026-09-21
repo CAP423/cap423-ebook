@@ -1,0 +1,9 @@
+# Apresentação {.unnumbered}
+
+Este livro reúne o material didático da disciplina **CAP-423 — Ciência de Dados Geoespaciais**.
+
+O conteúdo será desenvolvido de forma incremental em Quarto, combinando fundamentos conceituais, exemplos reprodutíveis e aplicações geoespaciais.
+
+## Organização do livro {.unnumbered}
+
+O primeiro capítulo introduz Ciência de Dados, aprendizado supervisionado e não supervisionado, o papel da localização nos dados, as relações entre *Spatial Data Science*, *Geospatial Data Science* e *Geographic Data Science*, a modelagem espacialmente explícita e o fluxo de trabalho em Ciência de Dados Geoespaciais.

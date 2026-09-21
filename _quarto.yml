@@ -1,0 +1,39 @@
+project:
+  type: book
+  output-dir: _book
+
+lang: pt-BR
+
+book:
+  title: "Ciência de Dados Geoespaciais"
+  subtitle: "Material da disciplina CAP-423"
+  author:
+    - name: "Édipo Henrique Cremon"
+      affiliation:
+        - ref: inpe
+    - name: "Rennan de Freitas Bezerra Marujo"
+      affiliation:
+        - ref: inpe
+  repo-url: https://github.com/CAP423/cap423-ebook
+  repo-actions: [edit, issue, source]
+  chapters:
+    - index.qmd
+    - 01-fundamentos.qmd
+
+affiliations:
+  - id: inpe
+    name: "Instituto Nacional de Pesquisas Espaciais (INPE)"
+    city: "São José dos Campos"
+    region: "São Paulo"
+    country: "Brasil"
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    toc-depth: 3
+    number-sections: true
+
+execute:
+  freeze: auto

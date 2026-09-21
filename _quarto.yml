@@ -19,10 +19,11 @@ book:
   chapters:
     - index.qmd
     - 01-fundamentos.qmd
+    - 02-geo-ds.qmd
 
 affiliations:
   - id: inpe
-    name: "Instituto Nacional de Pesquisas Espaciais (INPE)"
+    name: "Instituto Nacional de Pesquisas Espaciais - INPE"
     city: "São José dos Campos"
     region: "São Paulo"
     country: "Brasil"
@@ -34,6 +35,7 @@ format:
     toc: true
     toc-depth: 3
     number-sections: true
+    title-block-style: default
 
 execute:
   freeze: auto

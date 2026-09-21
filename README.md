@@ -1,16 +1,23 @@
 # cap423-ebook
-Material didático da disciplina CAP-423 — Ciência de Dados Geoespaciais, desenvolvido no âmbito do Instituto Nacional de Pesquisas Espaciais (INPE).
 
-O livro apresenta fundamentos conceituais e metodológicos para análise, exploração e modelagem de dados geoespaciais, com ênfase na integração entre Ciência de Dados, Geoinformática, métodos espaciais e Machine Learning.
+Ebook da disciplina **CAP-423 — Ciência de Dados Geoespaciais**, desenvolvido com [Quarto](https://quarto.org/docs/books/).
 
-📖 Acesso ao livro
+## Desenvolvimento local
 
-A versão HTML do livro está disponível em:
+No terminal do RStudio:
 
-https://cap423.github.io/cap423-ebook/
+```bash
+quarto preview
+```
 
-Autores
-Édipo Henrique Cremon
-Rennan de Freitas Bezerra Marujo
+Antes de publicar:
 
-Instituto Nacional de Pesquisas Espaciais — INPE
+```bash
+quarto render
+```
+
+Para publicar no GitHub Pages:
+
+```bash
+quarto publish gh-pages
+```

@@ -1,10 +1,122 @@
-/* Customizações simples do livro CAP-423 */
+/* =========================================================
+   CAP-423 — Ciência de Dados Geoespaciais
+   Customizações do Quarto Book
+   ========================================================= */
 
-.book .book-body .page-wrapper .page-inner section.normal p {
+
+/* ---------- Texto principal ---------- */
+
+#quarto-content p {
   text-align: justify;
+  hyphens: auto;
+  line-height: 1.65;
 }
+
+
+/* ---------- Área de conteúdo ---------- */
+
+main.content {
+  max-width: 950px;
+}
+
+
+/* ---------- Títulos ---------- */
+
+h1 {
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+}
+
+h2 {
+  margin-top: 2.2rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+h3 {
+  margin-top: 1.8rem;
+  font-weight: 600;
+}
+
+
+/* ---------- Bloco de título ---------- */
 
 .quarto-title-block .quarto-title-banner {
   padding-top: 2rem;
   padding-bottom: 2rem;
+}
+
+.quarto-title-block .quarto-title {
+  margin-bottom: 0.7rem;
+}
+
+
+/* ---------- Autores e afiliação ---------- */
+
+.quarto-title-meta-author {
+  font-size: 1rem;
+}
+
+.quarto-title-affiliation {
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+
+/* ---------- Figuras ---------- */
+
+.quarto-figure {
+  margin-top: 1.5rem;
+  margin-bottom: 1.8rem;
+}
+
+.quarto-figure figcaption {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  text-align: left;
+}
+
+
+/* ---------- Tabelas ---------- */
+
+table {
+  font-size: 0.95rem;
+}
+
+.table {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+
+/* ---------- Equações ---------- */
+
+.math.display {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+
+/* ---------- Links ---------- */
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+
+/* ---------- Sidebar ---------- */
+
+.sidebar-title {
+  font-weight: 600;
+}
+
+
+/* ---------- Espaçamento geral ---------- */
+
+section {
+  margin-bottom: 1.5rem;
 }

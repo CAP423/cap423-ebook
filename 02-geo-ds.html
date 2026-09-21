@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>2&nbsp; Fundamentos de Ciência de Dados Geoespaciais – Ciência de Dados Geoespaciais</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./01-fundamentos.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-70a47bd5681a7291082a5b9f83d58762.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nenhum resultado",
+    "search-matching-documents-text": "documentos correspondentes",
+    "search-copy-link-title": "Copiar link para a busca",
+    "search-hide-matches-text": "Esconder correspondências adicionais",
+    "search-more-match-text": "mais correspondência neste documento",
+    "search-more-matches-text": "mais correspondências neste documento",
+    "search-clear-button-title": "Limpar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Procurar"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-geo-ds.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fundamentos de Ciência de Dados Geoespaciais</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Procurar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Ciência de Dados Geoespaciais</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/CAP423/cap423-ebook" title="Código fonte" class="quarto-navigation-tool px-1" aria-label="Código fonte"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Procurar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Apresentação</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-fundamentos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Ciência de dados: uma breve contextualização</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-geo-ds.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fundamentos de Ciência de Dados Geoespaciais</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Índice</h2>
+   
+  <ul>
+  <li><a href="#quando-os-dados-possuem-localização" id="toc-quando-os-dados-possuem-localização" class="nav-link active" data-scroll-target="#quando-os-dados-possuem-localização"><span class="header-section-number">2.1</span> Quando os dados possuem localização</a></li>
+  <li><a href="#ciência-de-dados-espaciais-geoespaciais-e-geográficos" id="toc-ciência-de-dados-espaciais-geoespaciais-e-geográficos" class="nav-link" data-scroll-target="#ciência-de-dados-espaciais-geoespaciais-e-geográficos"><span class="header-section-number">2.2</span> Ciência de Dados Espaciais, Geoespaciais e Geográficos</a></li>
+  <li><a href="#ciência-de-dados-para-modelagem-espacialmente-explícita" id="toc-ciência-de-dados-para-modelagem-espacialmente-explícita" class="nav-link" data-scroll-target="#ciência-de-dados-para-modelagem-espacialmente-explícita"><span class="header-section-number">2.3</span> Ciência de dados para modelagem espacialmente explícita</a></li>
+  <li><a href="#o-fluxo-de-trabalho-em-ciência-de-dados-geoespaciais" id="toc-o-fluxo-de-trabalho-em-ciência-de-dados-geoespaciais" class="nav-link" data-scroll-target="#o-fluxo-de-trabalho-em-ciência-de-dados-geoespaciais"><span class="header-section-number">2.4</span> O fluxo de trabalho em Ciência de Dados Geoespaciais</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/CAP423/cap423-ebook/edit/main/02-geo-ds.qmd" class="toc-action"><i class="bi bi-github"></i>Editar essa página</a></li><li><a href="https://github.com/CAP423/cap423-ebook/issues/new" class="toc-action"><i class="bi empty"></i>Criar uma issue</a></li><li><a href="https://github.com/CAP423/cap423-ebook/blob/main/02-geo-ds.qmd" class="toc-action"><i class="bi empty"></i>Ver o código fonte</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fundamentos de Ciência de Dados Geoespaciais</span></h1>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Autores</div>
+  <div class="quarto-title-meta-heading">Afiliação</div>
+  
+  </div>
+
+<div class="quarto-title-meta">
+
+      
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="quando-os-dados-possuem-localização" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="quando-os-dados-possuem-localização"><span class="header-section-number">2.1</span> Quando os dados possuem localização</h2>
+<p>Nas seções anteriores, uma observação pôde ser representada, de forma simplificada, como um conjunto de atributos. Em um problema de regressão, por exemplo, cada unidade apresenta valores para uma variável resposta e para um conjunto de preditores; em um problema de classificação, esses atributos são utilizados para estimar a classe correspondente. Essa representação tabular permite tratar cada linha como uma unidade de análise descrita por suas características. Entretanto, muitos fenômenos observados no mundo real apresentam uma propriedade adicional: cada observação ocorre em algum lugar e, em muitos casos, ocupa determinada porção do espaço. A introdução dessa dimensão modifica a forma como os dados podem ser representados e analisados.</p>
+<p>Em termos conceituais, a passagem pode ser expressa inicialmente como a transição entre uma observação definida por seus atributos e outra que incorpora sua localização. Contudo, adicionar latitude e longitude como duas novas colunas de uma tabela não é suficiente para explorar a natureza espacial dos dados. Pebesma e Bivand (2023) alertam para os limites de tratar coordenadas da mesma maneira que variáveis convencionais, enquanto Rey, Arribas-Bel e Wolf (2023) enfatizam que a “geografia dos dados” envolve as relações possibilitadas pela localização. Assim, interessa menos a coordenada considerada isoladamente do que aquilo que ela permite estabelecer em relação às demais observações (pebesma2023; rey2023).</p>
+<p>Essa diferença pode ser representada, de forma esquemática, por:</p>
+<p>observação convencional=atributos=</p>
+<p>e</p>
+<p>Observação geoespacial=atributos+localização+relações espaciais.=++.</p>
+<p>A localização, por sua vez, não precisa corresponder a um ponto sem extensão. Uma observação pode representar uma estação meteorológica, um trecho de rio, um município, uma parcela de terreno ou uma célula de uma grade. A informação espacial associa atributos a uma geometria e a um determinado suporte espacial. Essa associação permite representar fenômenos como objetos discretos, superfícies contínuas ou redes, conforme a natureza daquilo que está sendo observado (Pebesma; Bivand, 2023; Moraga, 2024; Scheider et al., 2020). Scheider et al.&nbsp;(2020), por exemplo, ressaltam que diferentes concepções do fenômeno, como objeto, campo ou rede, conduzem a diferentes representações computacionais e formas de análise (pebesma2023; moraga2024; scheider2020).</p>
+<p>Uma vez que as observações possuem posição e geometria, torna-se possível caracterizar como elas se relacionam umas em relação às outras. Duas unidades podem estar próximas ou distantes, situadas em determinadas direções ou separadas por diferentes formas de deslocamento. A distância, nesse contexto, deixa de constituir uma propriedade de uma observação individual e passa a descrever uma relação entre pelo menos duas localizações. Além disso, a noção de proximidade depende da representação do espaço e do problema analisado. Uma separação pode ser expressa por distância geométrica, percurso sobre uma rede ou outra medida compatível com o fenômeno considerado (Anselin, 1989; Pebesma; Bivand, 2023). A posição relativa introduz, portanto, informação que não está contida nos atributos de cada registro quando considerados separadamente (anselin1989; pebesma2023).</p>
+<p>Quando essa estrutura relacional é considerada juntamente com os atributos, a posição de uma observação passa a fornecer contexto para interpretar os valores registrados. Observações próximas ou conectadas podem compartilhar condições ambientais, processos sociais, infraestrutura, fluxos ou outros mecanismos que atuam no espaço. Essa possibilidade está associada a uma característica recorrente dos fenômenos geográficos: valores observados em localizações próximas frequentemente apresentam algum grau de relação. Goodchild (2009) discute essa propriedade a partir da Primeira Lei da Geografia, segundo a qual entidades próximas tendem a apresentar maior semelhança do que entidades distantes. O tratamento formal dessa propriedade envolve conceitos de dependência e autocorrelação espacial, que serão desenvolvidos posteriormente (goodchild2009).</p>
+<p>As relações entre observações, quando consideradas para todo o conjunto de dados, produzem uma configuração espacial. Um fenômeno pode apresentar concentrações de valores semelhantes em determinadas partes da área estudada, diferenças entre regiões ou variações graduais ao longo do espaço. A configuração observada depende ainda de como o fenômeno foi representado, da extensão considerada e da escala em que as observações foram produzidas. Por essa razão, a análise de dados geoespaciais não se limita a perguntar quanto vale determinado atributo, mas inclui questões como onde os valores ocorrem, como as observações se distribuem e quais relações espaciais organizam esse padrão. Goodchild (2009) ressalta que fenômenos geográficos apresentam variação espacial e que conclusões obtidas em uma área limitada dependem das condições e dos limites espaciais considerados (goodchild2009).</p>
+<p>Essa estrutura tem consequências para a análise. Muitos procedimentos estatísticos convencionais partem da ideia de que cada observação fornece uma parcela independente de informação. Em dados espaciais, essa condição pode não ser satisfeita quando unidades próximas compartilham processos ou apresentam valores relacionados. Anselin (1989) destaca que a dependência entre observações espaciais reduz a quantidade de informação independente contida em um conjunto de dados e modifica pressupostos utilizados por procedimentos estatísticos usuais (anselin1989).</p>
+<p>A passagem da ciência de dados convencional para a ciência de dados geoespaciais decorre, portanto, de uma mudança na própria estrutura do problema. Quando a localização é conhecida, torna-se possível definir geometrias, comparar posições, estabelecer proximidades, reconhecer conexões e interpretar a organização conjunta das observações. O espaço deixa de funcionar somente como referência para indicar onde cada registro se encontra e passa a participar da estrutura analítica que conecta os registros entre si. Essa ideia pode ser condensada na formulação que orientará os próximos tópicos deste capítulo: <strong>a localização não constitui apenas mais uma variável do conjunto de dados; ela estabelece relações entre as observações.</strong></p>
+</section>
+<section id="ciência-de-dados-espaciais-geoespaciais-e-geográficos" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="ciência-de-dados-espaciais-geoespaciais-e-geográficos"><span class="header-section-number">2.2</span> Ciência de Dados Espaciais, Geoespaciais e Geográficos</h2>
+<p>A literatura contemporânea emprega as expressões <em>Spatial Data Science</em>, <em>Geospatial Data Science</em> e <em>Geographic Data Science</em> para designar domínios com forte sobreposição conceitual e metodológica. Não há uma taxonomia consensual que estabeleça fronteiras rígidas entre essas denominações. Em diferentes obras, termos distintos são utilizados para tratar problemas relacionados a dados localizados, métodos espaciais, computação, estatística e ciência de dados. Scheider et al.&nbsp;(2020, scheider2020) mostram, inclusive, que a própria condição da <em>Geographic Data Science</em> como disciplina científica autônoma permanece em debate e propõem compreendê-la, em seu estado atual, como uma comunidade interdisciplinar de prática. Essa diversidade terminológica recomenda cautela ao interpretar os termos como campos independentes.</p>
+<p>Apesar das diferenças de nomenclatura, as três expressões compartilham um núcleo conceitual. Elas aproximam práticas da ciência de dados de formas de representar, explorar, analisar e modelar observações cuja localização e estrutura espacial possuem relevância para o problema investigado. Nesse núcleo comum encontram-se a representação computacional de dados espaciais, a análise de relações entre observações, a estatística espacial, a modelagem e, mais recentemente, métodos de <em>machine learning</em> e inteligência artificial aplicados a dados espaciais. A diferença entre as denominações aparece menos na existência de um conjunto exclusivo de técnicas e mais na maneira como cada tradição enfatiza o significado do espaço, da localização e do contexto geográfico (Pebesma; Bivand, 2023, pebesma2023; Rey; Arribas-Bel; Wolf, 2023, rey2023; Scheider et al., 2020, scheider2020; Janowicz et al., 2020, janowicz2020; Moraga, 2024, moraga2024).</p>
+<p>Entre essas denominações, <em>Spatial Data Science</em> admite o sentido mais geral de espaço. O termo concentra-se nas propriedades espaciais das observações e dos processos, incluindo localização, geometria, suporte, distância, vizinhança e relações espaciais. Nessa perspectiva, o domínio de análise pode ser representado matematicamente sem que precise corresponder exclusivamente à superfície terrestre. Dados geoestatísticos, dados de área e padrões de pontos, por exemplo, podem ser formulados em domínios espaciais nos quais a posição das observações integra a definição do processo estatístico (Moraga, 2024, moraga2024). O uso de <em>spatial</em> permite, portanto, incluir problemas definidos em espaços cartesianos ou outros domínios nos quais relações espaciais sejam relevantes, inclusive fora do sentido estritamente geográfico. Essa amplitude conceitual herda diretamente o vocabulário da econometria espacial consolidada por Anselin (anselin1989).</p>
+<p><em>Geospatial Data Science</em> constitui um campo interdisciplinar na interface entre a Ciência de Dados e a Ciência da Informação Geográfica (GIScience), com suporte de métodos e tecnologias da Geoinformática. Dedica-se à análise de dados com referência espacial terrestre, nos quais propriedades como localização, distância, vizinhança e forma integram o próprio problema analítico e frequentemente se associam à dimensão temporal. O campo combina métodos estatísticos, computacionais e de aprendizado de máquina com formas de representação e análise adequadas aos dados geoespaciais.</p>
+<p>Por tratar de fenômenos localizados na superfície terrestre, na atmosfera, ou na subsuperfície, a análise requer referência espacial consistente e, conforme a aplicação, sistemas de referência de coordenadas e projeções cartográficas adequados. Sua abordagem utiliza estruturas de dados, bancos de dados espaciais, serviços e ambientes computacionais para organizar, processar e analisar informações geoespaciais. No contexto da observação da Terra, grandes coleções de imagens podem ser estruturadas como cubos de dados espaço-temporais, permitindo sua harmonização e análise sistemática ao longo do espaço e do tempo (Camara et al., 2021; Pebesma &amp; Bivand, 2023) .</p>
+<p><em>Geographic Data Science</em>, por sua vez, atribui maior centralidade à natureza geográfica da pergunta investigada. Rey, Arribas-Bel e Wolf (2023, rey2023) apresentam o campo como uma forma de aplicar a ciência de dados a problemas e dados geográficos por meio da combinação de raciocínio computacional e raciocínio geográfico. Nessa perspectiva, a localização participa da interpretação do fenômeno por meio de relações, contexto e organização geográfica, e conceitos como lugar, escala e configuração territorial influenciam a formulação das questões. Os autores procuram, inclusive, apresentar agrupamentos, valores atípicos e outros conceitos estatísticos a partir de uma perspectiva geográfica, em vez de limitar o tratamento do espaço à presença de coordenadas (Rey; Arribas-Bel; Wolf, 2023, rey2023). Scheider et al.&nbsp;(2020, scheider2020) reforçam essa dimensão ao mostrar que questões geográficas podem ser decompostas por conceitos espaciais como localização, campo, objeto, evento e rede.</p>
+<p>A partir dessas diferenças de ênfase, pode-se utilizar um gradiente terminológico como recurso de organização conceitual. Em uma extremidade, <strong>espacial</strong> rremete ao espaço em sentido mais geral e formal, abrangendo problemas em que localização, geometria, suporte, distância, vizinhança e dependência espacial integram a estrutura dos dados ou dos processos, inclusive em domínios que não precisam corresponder estritamente à superfície terrestre; essa perspectiva se articula a tradições como a estatística espacial, a geoestatística e a econometria espacial; <strong>geoespacial</strong> tende a enfatizar dados e fenômenos referenciados à Terra, juntamente com as representações, estruturas de dados, sistemas de referência, infraestruturas computacionais e métodos necessários à sua organização e análise, frequentemente incorporando também a dimensão temporal; <strong>geográfico</strong>, por sua vez, tende a conferir maior centralidade às perguntas, aos processos e às formas de raciocínio próprias da investigação geográfica, nas quais localização, relações espaciais, lugar, escala e contexto participam da interpretação dos fenômenos. Essa diferenciação não representa uma hierarquia nem implica relações formais de inclusão entre campos distintos. Trata-se de uma convenção interpretativa construída a partir das tendências observadas na literatura, destinada a auxiliar a leitura das diferentes denominações encontradas em livros e artigos. Suas fronteiras permanecem permeáveis, e a escolha de uma denominação depende, em grande medida, da tradição disciplinar, do problema investigado e do objetivo de cada obra (Scheider et al., 2020, scheider2020; Rey; Arribas-Bel; Wolf, 2023, rey2023).</p>
+</section>
+<section id="ciência-de-dados-para-modelagem-espacialmente-explícita" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="ciência-de-dados-para-modelagem-espacialmente-explícita"><span class="header-section-number">2.3</span> Ciência de dados para modelagem espacialmente explícita</h2>
+<p>A modelagem espacialmente explícita não constitui uma categoria paralela à Ciência de Dados Espaciais, Geoespaciais ou Geográficos, mas uma estratégia de modelagem inserida nesses domínios. Sua associação conceitual mais direta ocorre com a Ciência de Dados Espaciais, pois se refere à incorporação explícita da localização e das relações espaciais na representação ou formulação do modelo. Quando aplicada a fenômenos referenciados à Terra, essa estratégia integra a Ciência de Dados Geoespaciais; quando orientada por perguntas e processos geográficos, também pode compor abordagens de Ciência de Dados Geográficos.</p>
+<p>A presença de localização em um conjunto de dados não torna, por si só, uma análise ou um modelo espacialmente explícito. Essa distinção é importante porque dados espaciais podem ser utilizados em procedimentos estatísticos ou de <em>machine learning</em> que tratam cada observação essencialmente a partir de seus atributos, sem incorporar diretamente sua posição ou suas relações com outras observações. Em sentido amplo, a análise espacial envolve o estudo quantitativo de fenômenos que se manifestam no espaço e, portanto, considera elementos como localização, área, distância e interação (Anselin, 1989, anselin1989). A passagem de abordagens predominantemente não-espaciais para a modelagem espacial envolve justamente reconhecer que a estrutura espacial dos dados pode demandar estratégias analíticas específicas, inclusive para lidar com dependência e heterogeneidade espacial (Goodchild, 2009; Rowe; Arribas-Bel, 2026, [rowe2026]). Já a modelagem espacialmente explícita acrescenta uma exigência adicional: algum componente espacial deve participar da própria representação, formulação ou comportamento do modelo.</p>
+<p>Essa distinção pode ser entendida como uma progressão conceitual. <strong>Dados espaciais</strong> possuem uma referência de localização; na <strong>análise espacial</strong>, essa localização e as relações espaciais entre observações tornam-se objetos de investigação; na <strong>modelagem espacialmente explícita</strong>, localização, vizinhança, distância, conectividade, configuração espacial ou outras relações espaciais passam a integrar explicitamente a estrutura analítica ou computacional do modelo. A literatura sobre modelos espacialmente explícitos propõe diferentes critérios para reconhecer essa condição. Entre eles estão a sensibilidade dos resultados à realocação dos fenômenos, a presença de representações espaciais — como coordenadas ou relações espaciais — na implementação, o uso de conceitos espaciais na formulação do modelo, como vizinhança, e a transformação da estrutura espacial entre entradas e resultados (Janowicz et al., 2020, janowicz2020). Esses critérios mostram que o caráter espacialmente explícito depende menos do formato do dado ou do produto final e mais da maneira como o espaço participa do modelo.</p>
+<p>Essa diferença é particularmente relevante no uso de métodos convencionais de <em>machine learning</em>. Um algoritmo como <em>Random Forest</em>, por exemplo, pode ser ajustado com atributos ambientais associados a pixels ou pontos e, posteriormente, aplicado sobre uma grade para produzir um mapa contínuo de predições. O fato de a entrada possuir coordenadas ou de o resultado ser cartografado não significa, contudo, que o algoritmo tenha utilizado explicitamente relações de vizinhança, dependência espacial ou outra estrutura espacial durante o ajuste. Em contraste, um modelo passa a assumir caráter espacialmente explícito quando sua formulação ou seus preditores incorporam deliberadamente essas relações. Essa distinção é consistente com a observação de que uma análise pode revelar padrões geográficos sem que seu mecanismo analítico seja, ele próprio, espacialmente explícito (Janowicz et al., 2020, janowicz2020). A mera produção de um mapa, portanto, não deve ser usada como critério para classificar um modelo como espacialmente explícito.</p>
+<p>A necessidade dessa incorporação decorre do fato de que fenômenos geográficos frequentemente apresentam estrutura espacial. Dependência e heterogeneidade espacial podem fazer com que propriedades observadas em uma localização estejam associadas às condições de áreas vizinhas ou variem sistematicamente entre diferentes partes do domínio de estudo. Ignorar essas estruturas pode afetar a especificação, a interpretação e a avaliação dos modelos (Anselin, 1989, anselin1989; Goodchild, 2009). Assim, a modelagem espacialmente explícita deve ser entendida como uma possibilidade dentro da Ciência de Dados Espaciais ou Geoespaciais, e não como sinônimo dessas áreas. Ela corresponde a uma estratégia de modelagem na qual o espaço deixa de ser apenas uma referência dos dados e passa a constituir parte efetiva da representação do problema. As diferentes formas de incorporar essa estrutura — por meio de dependência espacial, relações de vizinhança, atributos derivados do contexto espacial ou arquiteturas especificamente espaciais — serão tratadas em seções posteriores.</p>
+<p>E o tempo? O tempo entra de forma análoga quando a <strong>estrutura temporal participa explicitamente do modelo</strong>. Nesse caso, é mais preciso falar em <strong>modelagem espaçotemporalmente explícita</strong> quando tanto as relações espaciais quanto as temporais são incorporadas à formulação. Janowicz et al.&nbsp;(2020) formulam justamente a questão de como integrar aspectos espaciais e temporais a técnicas de <em>machine learning</em>, indicando que a explicitação do espaço pode ser estendida à dimensão temporal.</p>
+</section>
+<section id="o-fluxo-de-trabalho-em-ciência-de-dados-geoespaciais" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="o-fluxo-de-trabalho-em-ciência-de-dados-geoespaciais"><span class="header-section-number">2.4</span> O fluxo de trabalho em Ciência de Dados Geoespaciais</h2>
+<p>A Ciência de Dados Geoespaciais não corresponde simplesmente à aplicação de procedimentos usuais da Ciência de Dados a registros que, adicionalmente, possuem coordenadas. A localização das observações, a forma como os fenômenos são representados e as relações espaciais entre entidades condicionam diferentes decisões ao longo do processo analítico. Na Ciência de Dados em sentido geral, atividades como obtenção e preparação dos dados, análise exploratória, modelagem e comunicação são interdependentes e compõem um processo que se estende desde a formulação das questões até a interpretação dos resultados (Schutt; O’Neil, 2014, schutt2014). No contexto geoespacial, a esse processo acrescentam-se decisões relacionadas à representação da localização e das relações geográficas, uma vez que diferentes formas de conceituar um fenômeno implicam diferentes estruturas e possibilidades de análise (Rey; Arribas-Bel; Wolf, 2023, rey2023). Neste livro, esse processo é sintetizado pelo seguinte fluxo: <strong>formulação do problema → aquisição dos dados → representação espacial → preparação → exploração → modelagem → validação → interpretação → comunicação e reprodução da análise</strong>. A sequência tem finalidade didática: organiza as principais decisões envolvidas em uma análise geoespacial, mas não pressupõe que elas ocorram de maneira estritamente linear.</p>
+<p><strong>Formulação do problema → Aquisição → Representação espacial → Preparação → Exploração → Modelagem → Validação → Interpretação → Comunicação e reprodução</strong></p>
+<p><strong>Figura 1.X — Fluxo de trabalho em Ciência de Dados Geoespaciais</strong></p>
+<p>O fluxo inicia-se pela <strong>formulação do problema</strong>, quando uma questão científica ou aplicada é convertida em objetivos analíticos e se definem o fenômeno de interesse, o domínio de estudo e as unidades a serem observadas. Em problemas geoespaciais, essa definição inclui necessariamente uma dimensão espacial e, quando pertinente, temporal: interessa estabelecer onde e em que extensão o fenômeno será analisado, em qual resolução ou nível de agregação e qual forma de organização espacial é compatível com a questão formulada. A <strong>aquisição dos dados</strong> reúne então as fontes necessárias para representar empiricamente o fenômeno. Entretanto, entre a obtenção dos dados e sua análise existe uma decisão particularmente importante: a <strong>representação espacial</strong>. Fenômenos geográficos podem ser conceituados como objetos, campos ou redes, e essas escolhas influenciam as relações que podem ser estabelecidas entre as observações; objetos podem ser relacionados por distância ou vizinhança, campos representam variação potencialmente contínua no espaço e redes incorporam a topologia das conexões (Rey; Arribas-Bel; Wolf, 2023, rey2023). A operacionalização desses conceitos envolve estruturas computacionais, extensão e resolução espacial, suporte das observações e sistemas de referência de coordenadas, entre outras propriedades (Pebesma; Bivand, 2023, pebesma2023; Moraga, 2024, moraga2024). A etapa de <strong>preparação</strong> transforma essas fontes em um conjunto analítico coerente, envolvendo limpeza, seleção, integração e operações espaciais de compatibilização, como reprojeção, recorte, agregação, reamostragem ou junções espaciais. Essas transformações não são necessariamente neutras: mudanças nas unidades ou níveis de agregação, por exemplo, podem alterar padrões e relações observados, como sintetizado pelo Problema da Unidade de Área Modificável — MAUP (Moraga, 2024, moraga2024).</p>
+<p>Uma vez construído o conjunto analítico, a <strong>exploração</strong> procura compreender a distribuição dos dados e identificar estruturas relevantes antes da modelagem. Além das distribuições de atributos e das relações entre variáveis, a análise exploratória espacial pode investigar padrões de localização, agrupamentos, valores atípicos e associação espacial. Essa etapa é especialmente importante porque dependência e heterogeneidade espacial podem limitar a aplicação acrítica de procedimentos desenvolvidos sob a hipótese de independência entre observações (Anselin, 1989, anselin1989). A <strong>modelagem</strong> traduz a questão formulada em uma estrutura estatística ou computacional capaz de explicar relações, realizar inferências ou produzir previsões. Ela pode empregar desde métodos convencionais de estatística e <em>machine learning</em> até modelos que incorporam explicitamente propriedades espaciais. Como discutido na seção anterior, utilizar dados georreferenciados ou produzir um mapa não torna automaticamente um modelo espacialmente explícito; dependendo da questão investigada, relações de distância, vizinhança, conectividade ou dependência espacial podem ou não integrar sua formulação (Janowicz et al., 2020, janowicz2020). A <strong>validação</strong>, por sua vez, procura avaliar em que medida os resultados são adequados ao objetivo da análise e podem ser generalizados para observações, locais ou períodos não utilizados no ajuste. Nesse ponto, a estrutura espacial dos dados novamente pode condicionar a escolha metodológica. Quando amostras próximas apresentam dependência, uma divisão aleatória entre treino e teste pode não representar adequadamente o cenário de predição pretendido; em determinadas situações, estratégias de validação espacialmente separadas podem fornecer uma avaliação mais apropriada, embora sua escolha deva estar vinculada ao propósito da aplicação e à distribuição dos dados (Moraga, 2024, moraga2024).</p>
+<p>O processo também não termina com a obtenção de uma métrica de desempenho ou com a geração de uma superfície de predição. A <strong>interpretação</strong> procura relacionar os resultados ao problema inicialmente formulado, examinando não apenas medidas globais, mas também sua organização geográfica. Em dados espaciais, a qualidade do ajuste ou da predição pode variar entre localizações, e relações de dependência podem fazer com que erros observados em posições vizinhas também apresentem estrutura espacial; consequentemente, medidas agregadas de desempenho podem não revelar integralmente o comportamento geográfico do modelo (Anselin, 1989, anselin1989). Essa atenção ao espaço também decorre da heterogeneidade característica de muitos fenômenos geográficos: condições e relações observadas em uma região não precisam se reproduzir da mesma maneira em outra (Goodchild, 2009, goodchild2009). A <strong>comunicação</strong> transforma essas interpretações em mapas, gráficos, textos, relatórios ou produtos interativos adequados ao público e à finalidade da análise. Na Ciência de Dados, visualizar e comunicar os resultados constituem componentes do próprio processo analítico, e não apenas uma atividade posterior à modelagem (Schutt; O’Neil, 2014, schutt2014). Associada à comunicação está a <strong>reprodução da análise</strong>, que requer documentar suficientemente as fontes de dados, transformações realizadas, parâmetros, código e ambiente computacional para que o percurso analítico possa ser compreendido e, quando possível, executado novamente. Ferramentas para relatórios reproduzíveis, visualizações interativas e painéis computacionais constituem parte desse ambiente contemporâneo de análise espacial (Moraga, 2024, moraga2024).</p>
+<p>Embora representado por uma sequência de etapas, esse fluxo deve ser compreendido como <strong>iterativo</strong>. A análise exploratória pode revelar valores ausentes, erros, escolhas inadequadas de representação ou novas relações que exigem retornar à aquisição ou à preparação dos dados; Schutt e O’Neil (2014, schutt2014) observam explicitamente que a análise exploratória frequentemente leva à coleta de novos dados ou a novas etapas de limpeza. Da mesma forma, resultados insatisfatórios na validação podem levar à reformulação de variáveis ou modelos, enquanto a interpretação pode evidenciar que a representação espacial ou mesmo a pergunta inicial precisa ser reconsiderada. A formulação do problema, portanto, não ocorre apenas no início: as evidências obtidas ao longo da análise podem modificar a compreensão do próprio fenômeno investigado. Essa dinâmica de tentativa, avaliação e revisão é inerente ao processo de Ciência de Dados, no qual exploração e modelagem avançam por sucessivas aproximações (Schutt; O’Neil, 2014, schutt2014). O fluxo proposto constitui, assim, uma síntese organizadora para este material, e não um protocolo rígido.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiada");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiada");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./01-fundamentos.html" class="pagination-link" aria-label="Ciência de dados: uma breve contextualização">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Ciência de dados: uma breve contextualização</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/CAP423/cap423-ebook/edit/main/02-geo-ds.qmd" class="toc-action"><i class="bi bi-github"></i>Editar essa página</a></li><li><a href="https://github.com/CAP423/cap423-ebook/issues/new" class="toc-action"><i class="bi empty"></i>Criar uma issue</a></li><li><a href="https://github.com/CAP423/cap423-ebook/blob/main/02-geo-ds.qmd" class="toc-action"><i class="bi empty"></i>Ver o código fonte</a></li></ul></div></div></div></footer></body></html>

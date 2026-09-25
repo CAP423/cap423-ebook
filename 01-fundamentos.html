@@ -71,6 +71,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -132,6 +161,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fundamentos de Ciência de Dados Geoespaciais</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-spatial-ml.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Aprendizado de máquina com dados geoespaciais</span></span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -190,7 +225,17 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="1.1" class="anchored" data-anchor-id="aprendizado-a-partir-dos-dados"><span class="header-section-number">1.1</span> Aprendizado a partir dos dados</h2>
 <p>Entre os componentes da ciência de dados apresentados anteriormente, o <em>machine learning</em> reúne métodos computacionais que permitem identificar regularidades nos dados e utilizá-las para descrever estruturas, atribuir classes ou realizar predições. Schutt e O’Neil (2014, schutt2014) destacam três tarefas recorrentes associadas a esses algoritmos: predizer, classificar e agrupar. Essas tarefas abrangem diferentes formas de aprendizado e podem ser organizadas, em uma primeira aproximação, conforme a presença ou ausência de uma variável resposta conhecida durante o processo de aprendizagem.</p>
 <p>Essa classificação não estabelece uma separação rígida entre estatística e <em>machine learning</em>. Diversos métodos aparecem nas duas tradições e podem receber diferentes denominações conforme o contexto disciplinar. A regressão linear, por exemplo, pode ser apresentada como modelo estatístico ou como algoritmo de aprendizado, enquanto outros procedimentos tiveram desenvolvimento mais associado à computação. Para os objetivos deste material, interessa menos delimitar fronteiras disciplinares e mais reconhecer a natureza do problema, os dados disponíveis e a finalidade da análise antes da escolha de um método (Schutt; O’Neil, 2014, schutt2014).</p>
-<p>Uma distinção inicial pode ser feita entre aprendizado <strong>não supervisionado</strong> e <strong>supervisionado</strong>. No primeiro caso, não se dispõe previamente de uma variável resposta ou de rótulos que indiquem a resposta esperada para cada observação. Busca-se reconhecer estruturas presentes no próprio conjunto de dados. No segundo, as observações utilizadas durante o aprendizado incluem preditores e uma resposta conhecida, de modo que o modelo procura aprender uma relação que posteriormente possa ser aplicada a novas observações.</p>
+<p>Uma distinção inicial pode ser feita entre aprendizado <strong>não supervisionado</strong> e <strong>supervisionado</strong>. No primeiro caso, não se dispõe previamente de uma variável resposta ou de rótulos que indiquem a resposta esperada para cada observação. Busca-se reconhecer estruturas presentes no próprio conjunto de dados. No segundo, as observações utilizadas durante o aprendizado incluem preditores e uma resposta conhecida, de modo que o modelo procura aprender uma relação que posteriormente possa ser aplicada a novas observações (<a href="#fig-aprendizado-supervisionado-nao-supervisionado" class="quarto-xref">Figura&nbsp;<span>1.1</span></a>).</p>
+<div id="fig-aprendizado-supervisionado-nao-supervisionado" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-aprendizado-supervisionado-nao-supervisionado-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figuras/fig1_1.png" class="img-fluid figure-img" style="width:85.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-aprendizado-supervisionado-nao-supervisionado-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1.1: Aprendizado supervisionado e não supervisionado. No aprendizado supervisionado, observações com preditores <span class="math inline">\(x\)</span> e uma resposta conhecida <span class="math inline">\(y\)</span> são utilizadas para ajustar modelos destinados, entre outras tarefas, à regressão e à classificação. No aprendizado não supervisionado, a ausência de uma resposta conhecida desloca o objetivo para a identificação de estruturas presentes nos próprios dados, como agrupamentos ou representações de menor dimensionalidade.
+</figcaption>
+</figure>
+</div>
 <section id="aprendizado-não-supervisionado" class="level3" data-number="1.1.1">
 <h3 data-number="1.1.1" class="anchored" data-anchor-id="aprendizado-não-supervisionado"><span class="header-section-number">1.1.1</span> Aprendizado não supervisionado</h3>
 <p>No aprendizado não supervisionado, a estrutura de interesse não é fornecida previamente por meio de uma variável resposta. O algoritmo opera sobre os atributos observados com o objetivo de reconhecer padrões, proximidades ou dimensões subjacentes aos dados. Em um problema de agrupamento, por exemplo, as observações são organizadas segundo algum critério de similaridade sem que suas classes sejam conhecidas antecipadamente.</p>

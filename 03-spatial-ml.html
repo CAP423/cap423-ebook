@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Édipo Henrique Cremon">
-<meta name="author" content="Rennan de Freitas Bezerra Marujo">
 
-<title>Ciência de Dados Geoespaciais</title>
+<title>3&nbsp; Aprendizado de máquina com dados geoespaciais – Ciência de Dados Geoespaciais</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./01-fundamentos.html" rel="next">
+<link href="./02-geo-ds.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -85,7 +83,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Apresentação</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./03-spatial-ml.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Aprendizado de máquina com dados geoespaciais</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Procurar" onclick="window.quartoOpenSearch();">
@@ -117,7 +115,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Apresentação</span></a>
   </div>
 </li>
@@ -135,7 +133,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-spatial-ml.html" class="sidebar-item-text sidebar-link">
+  <a href="./03-spatial-ml.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Aprendizado de máquina com dados geoespaciais</span></span></a>
   </div>
 </li>
@@ -149,20 +147,16 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Índice</h2>
    
   <ul>
-  <li><a href="#apresentação" id="toc-apresentação" class="nav-link active" data-scroll-target="#apresentação">Apresentação</a>
-  <ul class="collapse">
-  <li><a href="#organização-do-livro" id="toc-organização-do-livro" class="nav-link" data-scroll-target="#organização-do-livro">Organização do livro</a></li>
-  </ul></li>
+  <li><a href="#sec-ml-encontra-espaco" id="toc-sec-ml-encontra-espaco" class="nav-link active" data-scroll-target="#sec-ml-encontra-espaco"><span class="header-section-number">3.1</span> O que muda quando o Machine Learning encontra o espaço?</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/CAP423/cap423-ebook/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Editar essa página</a></li><li><a href="https://github.com/CAP423/cap423-ebook/issues/new" class="toc-action"><i class="bi empty"></i>Criar uma issue</a></li><li><a href="https://github.com/CAP423/cap423-ebook/blob/main/index.qmd" class="toc-action"><i class="bi empty"></i>Ver o código fonte</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/CAP423/cap423-ebook/edit/main/03-spatial-ml.qmd" class="toc-action"><i class="bi bi-github"></i>Editar essa página</a></li><li><a href="https://github.com/CAP423/cap423-ebook/issues/new" class="toc-action"><i class="bi empty"></i>Criar uma issue</a></li><li><a href="https://github.com/CAP423/cap423-ebook/blob/main/03-spatial-ml.qmd" class="toc-action"><i class="bi empty"></i>Ver o código fonte</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Ciência de Dados Geoespaciais</h1>
-<p class="subtitle lead">Material da disciplina CAP-423</p>
+<h1 class="title"><span id="sec-aprendizado-maquina-geoespacial" class="quarto-section-identifier"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Aprendizado de máquina com dados geoespaciais</span></span></h1>
 </div>
 
 
@@ -170,22 +164,6 @@ ul.task-list li input[type="checkbox"] {
   <div class="quarto-title-meta-heading">Autores</div>
   <div class="quarto-title-meta-heading">Afiliação</div>
   
-    <div class="quarto-title-meta-contents">
-    <p class="author">Édipo Henrique Cremon </p>
-  </div>
-  <div class="quarto-title-meta-contents">
-        <p class="affiliation">
-            Instituto Nacional de Pesquisas Espaciais - INPE
-          </p>
-      </div>
-    <div class="quarto-title-meta-contents">
-    <p class="author">Rennan de Freitas Bezerra Marujo </p>
-  </div>
-  <div class="quarto-title-meta-contents">
-        <p class="affiliation">
-            Instituto Nacional de Pesquisas Espaciais - INPE
-          </p>
-      </div>
   </div>
 
 <div class="quarto-title-meta">
@@ -200,16 +178,17 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="apresentação" class="level1 unnumbered">
-<h1 class="unnumbered">Apresentação</h1>
-<p>Este livro reúne o material didático da disciplina <strong>CAP-423 — Ciência de Dados Geoespaciais</strong>.</p>
-<p>O conteúdo será desenvolvido de forma incremental em Quarto, combinando fundamentos conceituais, exemplos reprodutíveis e aplicações geoespaciais.</p>
-<section id="organização-do-livro" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="organização-do-livro">Organização do livro</h2>
-<p>O primeiro capítulo introduz Ciência de Dados, aprendizado supervisionado e não supervisionado, o papel da localização nos dados, as relações entre <em>Spatial Data Science</em>, <em>Geospatial Data Science</em> e <em>Geographic Data Science</em>, a modelagem espacialmente explícita e o fluxo de trabalho em Ciência de Dados Geoespaciais.</p>
+<section id="sec-ml-encontra-espaco" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="sec-ml-encontra-espaco"><span class="header-section-number">3.1</span> O que muda quando o Machine Learning encontra o espaço?</h2>
+<p>Em aplicações convencionais de Machine Learning, cada observação costuma ser representada por uma variável resposta e um conjunto de atributos, e o algoritmo procura regularidades que permitam predizer a resposta a partir desses atributos. Essa representação tabular pode sugerir que as linhas do conjunto de dados são unidades intercambiáveis. Em problemas geoespaciais, porém, cada observação está associada a uma posição e a um contexto geográfico. Localização, distância e interação passam a integrar a interpretação dos dados, porque fenômenos distribuídos no espaço geográfico podem apresentar padrões cuja organização depende da configuração espacial das observações.</p>
+<p>A proximidade geográfica é uma das formas pelas quais essa estrutura pode se manifestar. Observações próximas podem compartilhar condições ambientais, processos de difusão, conectividade ou outros mecanismos que produzam semelhança entre seus valores. Quando a associação entre valores varia sistematicamente em função da configuração espacial, fala-se em autocorrelação espacial. Esse conceito, contudo, não esgota a noção de estrutura espacial. A disposição dos pontos de amostragem, a organização de áreas vizinhas, barreiras, redes e gradientes também podem condicionar os padrões observados. Assim, a localização precisa ser interpretada como parte do contexto em que cada observação foi produzida.</p>
+<p>Essa perspectiva evita tratar a autocorrelação espacial como um defeito dos dados. Goodchild (2009) argumenta que a dependência espacial pode tensionar pressupostos de independência empregados por determinados procedimentos inferenciais, ao mesmo tempo que constitui uma característica definidora da informação geográfica. Em tarefas preditivas, essa dependência pode conter informação legítima sobre o fenômeno: se locais próximos compartilham processos ou condições, observações próximas podem carregar informação relevante umas sobre as outras. Seu significado depende da pergunta de pesquisa e do cenário em que a predição será realizada.</p>
+<p>A estrutura espacial também pode ser influenciada pela forma como o fenômeno é observado. Dados de campo raramente são distribuídos de maneira uniforme ou aleatória. Restrições de acesso, desenho amostral, integração de bases produzidas para finalidades distintas e concentração das medições em determinadas regiões podem gerar agrupamentos e lacunas. Nowosad et al.&nbsp;(2026) destacam a distribuição espacial desigual da amostra, a autocorrelação e a heterogeneidade entre características recorrentes em aplicações de Machine Learning espacial. Assim, semelhanças entre observações próximas podem decorrer do próprio processo geográfico, da estratégia de coleta ou de uma combinação entre ambos, situações que possuem interpretações distintas.</p>
+<p>A heterogeneidade espacial acrescenta outra dimensão ao problema. Relações entre resposta e preditores podem variar entre lugares, de modo que uma associação aprendida em determinado contexto não precisa manter a mesma forma ou intensidade em outro. A presença de dependência e heterogeneidade reduz a utilidade de imaginar o conjunto de treinamento como uma coleção de casos independentes provenientes de condições equivalentes. O modelo aprende a partir das situações efetivamente observadas, incluindo regularidades associadas à localização, ao contexto e à distribuição da amostra. Essa característica também impõe cautela ao generalizar relações observadas em um contexto geográfico para outros contextos (Goodchild, 2009).</p>
+<p>Essas propriedades afetam a interpretação do desempenho preditivo. Roberts et al.&nbsp;(2017) mostram que dados estruturados podem permitir que preditores correlacionados com a estrutura espacial reproduzam dependências presentes no conjunto de dados, sem que isso corresponda necessariamente a uma relação generalizável com o processo de interesse. Quando observações usadas para avaliar o modelo estão espacialmente próximas das utilizadas no treinamento, sua semelhança pode tornar a tarefa de predição mais fácil e produzir estimativas excessivamente otimistas de desempenho. Ploton et al.&nbsp;(2020), por exemplo, demonstraram esse efeito em modelos de biomassa florestal na África Central, nos quais uma avaliação que ignorava a dependência espacial indicava capacidade preditiva muito superior à obtida quando a separação espacial entre treinamento e avaliação era considerada.</p>
+<p>Aprender com dados geoespaciais exige, portanto, perguntar o que sustenta o padrão aprendido. O modelo capturou relações entre atributos e o fenômeno que permanecem informativas em outras situações, ou explorou semelhanças associadas à proximidade e ao contexto compartilhado pelas observações disponíveis? Reconhecer essa distinção conduz à próxima questão: onde estão as observações utilizadas no treinamento, quais condições elas representam e em quais lugares e condições o modelo será empregado para predizer. Essa passagem do conjunto de treinamento para o domínio de predição orienta a próxima seção.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -615,11 +594,11 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./02-geo-ds.html" class="pagination-link" aria-label="Fundamentos de Ciência de Dados Geoespaciais">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fundamentos de Ciência de Dados Geoespaciais</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./01-fundamentos.html" class="pagination-link" aria-label="Ciência de dados: uma breve contextualização">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Ciência de dados: uma breve contextualização</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
@@ -627,4 +606,4 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/CAP423/cap423-ebook/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Editar essa página</a></li><li><a href="https://github.com/CAP423/cap423-ebook/issues/new" class="toc-action"><i class="bi empty"></i>Criar uma issue</a></li><li><a href="https://github.com/CAP423/cap423-ebook/blob/main/index.qmd" class="toc-action"><i class="bi empty"></i>Ver o código fonte</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/CAP423/cap423-ebook/edit/main/03-spatial-ml.qmd" class="toc-action"><i class="bi bi-github"></i>Editar essa página</a></li><li><a href="https://github.com/CAP423/cap423-ebook/issues/new" class="toc-action"><i class="bi empty"></i>Criar uma issue</a></li><li><a href="https://github.com/CAP423/cap423-ebook/blob/main/03-spatial-ml.qmd" class="toc-action"><i class="bi empty"></i>Ver o código fonte</a></li></ul></div></div></div></footer></body></html>
